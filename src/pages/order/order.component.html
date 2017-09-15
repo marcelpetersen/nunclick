@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu" color="white"></ion-icon>
+    </button>
+    <ion-title>Lista de Produtos</ion-title>
+    <ion-buttons end>
+      <ion-badge *ngIf="cartLength()" color="danger" style="font-size: 12px; padding: 3px; position: absolute; top: 0px; left: 0px; z-index: 1;"><b>{{cartLength()}}</b></ion-badge>
+      <cart-indicator style="color: white;" (wasClicked)="openCart()"></cart-indicator>
+    </ion-buttons>
+  </ion-navbar>
+ 
+  <ion-toolbar> 
+    <ion-searchbar placeholder="O que você deseja buscar?" 
+      [(ngModel)]="search"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="order">
+  <div [hidden]="!loading" text-center padding>
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="Atualizar..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item-group [hidden]="loading">
+        <div ion-item *ngFor="let produto of prodOrder | produtoSearch:search; let i = index">
+          <div>
+            <p><b style="font-size: 20px; margin-top: 10px;">{{produto.name}}</b></p>
+            <img src="{{produto.img}}" style="width: 130px; height: 130px;">
+            <div style="position: absolute; display: block; top: 55px; left: 150px; width: 30px; height: 100px;">
+              <button ion-button icon-only clear large style="position: relative; display: block; top: -16px; left: -20px;" (click)="plusOne( produto, minPrice(produto.name), 1)">
+                <ion-icon name="add-circle"></ion-icon>
+              </button>
+              <input type="number" style="position: relative; display: block; bottom: 26px; left: -2px; width: 33px; text-align: center;"
+                   [(ngModel)]="quant[numi(produto.name, minPrice(produto.name).market)]" (change)="plusOne( produto, minPrice(produto.name), 0)">
+              <button ion-button icon-only clear large style="position: relative; display: block; bottom: 35px; left: -20px;" (click)="lessOne( produto, minPrice(produto.name))">
+                <ion-icon name="remove-circle"></ion-icon>
+              </button>
+            </div>
+          </div>    
+            <div style="position: absolute; display: block; width: 110px; height: 100px; top: 55px; right: 20px; text-align: center;">
+              <p style="font-size: 18px;"><b>Menor Preço:</b></p>
+              <p style="font-size: 16px;">R$ {{minPrice(produto.name).price}}</p>
+              <p style="font-size: 12px;">{{minPrice(produto.name).market}}</p>
+              <button item-right (click)="openProduto(produto.id, $event)" ion-button style="font-size: 13px; width: 100%;"> 
+                MAIS PREÇOS
+              </button>
+            </div>
+        </div>   
+    </ion-item-group>
+  </ion-list>
+</ion-content>

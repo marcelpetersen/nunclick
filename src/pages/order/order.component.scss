@@ -1,0 +1,30 @@
+.order {
+  ion-list {
+    background-color: #fff;
+  }
+
+}
+
+.produt {
+	font-size: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+#circle {
+    background: red;
+    color: white;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    display: block;
+    position: relative;
+    top: 11px;
+    left: 5px;
+}

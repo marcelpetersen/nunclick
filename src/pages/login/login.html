@@ -1,0 +1,30 @@
+<ion-content padding="true" class="manual-ios-statusbar-padding" scroll="false" style="background-color: #3f4373; width: 100%; height: 100%;">
+<div class="spacer" style="width: auto; height: 45px;"></div> 
+  <div> 
+     <img src="http://nunclick.com/images/nunclick-icon.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto; margin-bottom: 39px; position:relative; top: 26px;">
+  </div>
+
+<h4 style="color:#ffffff;text-align:center;">NunClick</h4>
+<div style="widht:100%;"><div style="width:80%; display:block position:relative; margin-left: auto; margin-right: auto;">  
+     <form (ngSubmit)="login(user)">
+       <div class="spacer" style="width: auto; height: 13px;"></div>   
+       <ion-item>
+       <input type="email" [(ngModel)]="user.email" name="email" placeholder="EMAIL" style="text-align:center; border:none; width:100%; margin-left: auto; margin-right: auto;">
+       </ion-item>
+       <div class="spacer" style="width: auto; height: 13px;"></div>   
+       <ion-item>
+       <input type="password" [(ngModel)]="user.password" name="password" placeholder="SENHA" style="text-align:center; border:none; width:100%; margin-left: auto; margin-right: auto;">
+       </ion-item>
+  
+       <div class="spacer" style="width: auto; height: 26px;"></div>       
+       <button ion-button icon-start class="btn" type="submit" color="dark" >
+ <ion-icon name="log-in"></ion-icon>&nbsp;CONECTAR</button>
+    
+     </form>         
+   </div> </div>   
+
+    <p style="text-align: center; font-size:16px"><a href="#" style="color:white; text-decoration:none; text-shadow: 2px 2px #000;" (click)="goRegister()">Criar conta</a></p>
+    <p style="width: 100%; text-align: center; color: red;" *ngIf="errorMsg">{{errorMsg}}</p>
+</ion-content>
+
+

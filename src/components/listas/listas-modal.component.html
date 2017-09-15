@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button (click)="closeModal()" style="float: left; margin-right: 0px; padding: 0px;" class="back-button bar-button bar-button-md back-button-md bar-button-default bar-button-default-md show-back-button" ion-button="bar-button" ng-reflect-klass="back-button" ng-reflect-ng-class="back-button-md"><span class="button-inner"><ion-icon class="back-button-icon icon icon-md back-button-icon-md ion-md-arrow-back" role="img" ng-reflect-klass="back-button-icon" ng-reflect-ng-class="back-button-icon-md" aria-label="arrow back" ng-reflect-name="md-arrow-back"></ion-icon><span class="back-button-text back-button-text-md" ng-reflect-klass="back-button-text" ng-reflect-ng-class="back-button-text-md"></span></span><div class="button-effect" style="transform: translate3d(-14px, -19px, 0px) scale(1); height: 64px; width: 64px; opacity: 0; transition: transform 273ms, opacity 191ms 82ms;"></div></button>
+    <ion-title style="margin-left: 0px; margin-top: 5px; padding: 0px;">Minhas Listas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <a ion-item *ngFor="let lista of listas" (click)="showList(lista.key)">
+      <h2 style="font-size: 20px;"><b style="font: bold italic 30px/1.5 Helvetica, Verdana, sans-serif; color: #ccc">{{lista.index}}.</b> &nbsp;&nbsp; {{lista.key}}</h2>
+      <button item-right (click)="removeList( lista.key, $event )" color="danger" ion-button icon-only default>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </a>
+  </ion-list>
+</ion-content>

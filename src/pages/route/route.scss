@@ -1,0 +1,44 @@
+  page-home {
+
+  #floating-panel {
+    opacity: 0.8;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+
+    #floating-info {
+    opacity: 0.8;
+    position: absolute;
+    bottom: 30px;
+    left: 5px;
+    z-index: 6;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: left;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-rigth: 10px;
+  }
+
+#directions-panel {
+        height: 100%;
+        float: right;
+        width: 390px;
+        overflow: auto;
+      }
+
+  #map {
+    height: 100%;
+  }
+
+  }

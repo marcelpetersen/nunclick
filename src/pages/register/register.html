@@ -1,0 +1,38 @@
+<!--
+  Generated template for the ARegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+</ion-header>
+
+
+<ion-content padding style="background-color: #3f4373; width: 100%; height: 100%;">
+<div class="spacer" style="width: auto; height: 45px;"></div> 
+<div> 
+  <img src="http://nunclick.com/images/nunclick-icon.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto; margin-bottom: 39px; position:relative; top: 26px;">
+</div>
+<h4 style="color:#ffffff;text-align:center;">NunClick</h4>  
+  	<form (ngSubmit)="register(user)">
+
+      <ion-item>
+        <input type="email" [(ngModel)]="user.email" name="email" placeholder="EMAIL" style="text-align:center; border:none; width:100%; margin-left: auto; margin-right: auto;">
+
+      </ion-item>
+      <ion-item>
+        <input type="password" [(ngModel)]="user.password" name="password" placeholder="SENHA" style="text-align:center; border:none; width:100%; margin-left: auto; margin-right: auto;">
+
+      </ion-item>
+      <ion-item>
+        <input type="password" [(ngModel)]="password2" name="password2" placeholder="CONFIRMAR SENHA" style="text-align:center; border:none; width:100%; margin-left: auto; margin-right: auto;">
+
+      </ion-item>
+      <div class="spacer" style="width: auto; height: 13px;"></div> 
+      <button ion-button icon-start class="btn" type="submit" color="dark" ><ion-icon name="done-all"></ion-icon>&nbsp;CRIAR CONTA</button>
+
+    </form>
+    <p style="text-align: center; font-size:16px"><a href="#" style="color:white; text-decoration:none; text-shadow: 2px 2px #000;" (click)="goLogin()">Já tenho conta</a></p>
+    <p *ngIf="msg" [ngStyle]="{'color': msg[0] == 'green' ? '#00cc00' : 'red'}" style="width: 100%; text-align: center;">{{msg[1]}}</p>
+</ion-content>

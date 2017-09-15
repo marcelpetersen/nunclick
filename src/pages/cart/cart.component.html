@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu" color="white"></ion-icon>
+    </button>
+    <ion-title>Carrinho de Compras</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="cart.length">
+  <div *ngFor=" let mercado of mercados ">
+    <div style="background-color: #f8f8f8; height: 50px;">
+      <div style="font-size: 25px; margin-top: 0px; position: relative; top: 10px;">
+        <ion-icon name="pricetags" style="margin-left: 10px;"></ion-icon>
+        <span style="margin-left: 5px; margin-bottom: 10px;" *ngIf="mercado">
+          {{mercado}}
+        </span>
+      </div>
+      <div style="display: block; position: relative; right: 5px; top: -15px; font-size: 16px;" text-right>
+        <b>{{calcEachSum(mercado).toFixed(2)}}</b>
+      </div>
+      <hr>
+    </div>
+    <div *ngFor="let item of cart; let index=index">
+      <div *ngIf="item.market === mercado">
+        <div ion-item >
+          <h2 style="font-size: 18px;"><span>{{item.name}}</span></h2>
+          <p style="font-size: 15px;"><span>Unit: &nbsp; R$ {{item.price}} </span><br><span>Total: R$ {{(item.price*item.quant).toFixed(2)}}</span></p>
+          <button item-right (click)="removeItem( item )" color="danger" ion-button icon-only default>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+          <div style="position: absolute; display: block; top: 45px; left: 150px; width: 100px; height: 30px;">
+            <button ion-button icon-only clear large style="position: relative; display: block; top: -16px; left: 49px;" (click)="plusOne( item, item, 1)">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <input type="number" style="position: relative; display: block; bottom: 60px; left: 26px; width: 33px; text-align: center;"
+                 [(ngModel)]="quant[numi( item.name, item.market)]" (change)="plusOne( item, item, 0)">
+            <button ion-button icon-only clear large style="position: relative; display: block; bottom: 104px; left: -32px;" (click)="lessOne( item, item)">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ion-list>
+  <p *ngIf="!cart.length" padding text-center>
+    Seu carrinho de compras está vazio!
+  </p>
+</ion-content>
+
+<ion-footer style="height: 60px;">
+  <ion-toolbar>
+    <div>
+      <div style="float: left; margin-top: 0px; position: relative; bottom: 10px;">
+        <button style="font-size: 14px; padding-top: 2px; padding-bottom: 2px; height: 30px;" ion-button (click)="saveList()">SALVAR</button>
+        <button style="font-size: 14px; padding-top: 2px; padding-bottom: 2px; height: 30px;" ion-button (click)="dropList()" color="danger">APAGAR</button>
+      </div>
+      <div text-right style="font-size: 17px; margin-top: 17px;">
+        <b>Total: &nbsp; R$ {{calcTotalSum().toFixed(2)}}</b>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

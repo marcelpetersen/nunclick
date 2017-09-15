@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu" style="color: white;"></ion-icon>
+    </button>
+    <ion-title>Rotas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let u of usuario | async">
+    <h2> Welcome {{u.nomeCompleto.value}} </h2>
+    <p> Patente: {{u.level.value}} {{saveProfile(u)}}</p>
+  </div>
+
+
+
+  <div id="floating-panel">
+    <b>De: </b>
+    <select [(ngModel)]="start" id="start" (change)="onChangeHandler()">
+      <option value="" disabled='disabled'>Partida</option>
+      <option value="sede mundial abutres, paiol">¹³ Sede Mundial Abutre's MC</option>
+      <option value="aracaju, se">Aracaju-SE</option>
+      <option value="belém, pa">Belém-PA</option>
+      <option value="belo horizonte, mg">Belo Horizonte-MG</option>
+      <option value="boa vista, rr">Boa Vista-RR</option>
+      <option value="brasília, df">Brasília-DF</option>
+      <option value="campo grande, ms">Campo Grande-MS</option>
+      <option value="cuiabá, mt">Cuiabá-MT</option>
+      <option value="curitiba, pr">Curitiba-PR</option>
+      <option value="fortaleza, ce">Fortaleza-CE</option>
+      <option value="florianópolis, sc">Florianópolis-SC</option>
+      <option value="goiânia, go">Goiânia-GO</option>
+      <option value="macapá, pa">Macapá-AP</option>
+      <option value="maceió, al">Maceió-AL</option>
+      <option value="manaus, am">Manaus-AM</option>
+      <option value="natal, rn">Natal-RN</option>
+      <option value="palmas, to">Palmas-TO</option>
+      <option value="porto alegre, rs">Porto Alegre-RS</option>
+      <option value="porto velho, ro">Porto Velho-RO</option>
+      <option value="recife, pe">Recife-PE</option>
+      <option value="rio branco, ac">Rio Branco-AC</option>
+      <option value="rio de janeiro, rj">Rio de Janeiro-RJ</option>
+      <option value="são luís, ma">São Luís-MA</option>
+      <option value="são paulo, sp">São Paulo-SP</option>
+      <option value="salvador, ba">Salvador-BA</option>
+      <option value="teresina, pi">Teresina-PI</option>
+      <option value="vitória, es">Vitória-ES</option>
+    </select><br>
+    <b>Até: </b>
+    <select [(ngModel)]="end" id="end" (change)="onChangeHandler()">
+      <option value="" disabled='disabled'>Chegada</option>
+      <option value="sede mundial abutres, paiol">¹³ Sede Mundial Abutre's MC</option>
+      <option value="aracaju, se">Aracaju-SE</option>
+      <option value="belém, pa">Belém-PA</option>
+      <option value="belo horizonte, mg">Belo Horizonte-MG</option>
+      <option value="boa vista, rr">Boa Vista-RR</option>
+      <option value="brasília, df">Brasília-DF</option>
+      <option value="campo grande, ms">Campo Grande-MS</option>
+      <option value="cuiabá, mt">Cuiabá-MT</option>
+      <option value="curitiba, pr">Curitiba-PR</option>
+      <option value="fortaleza, ce">Fortaleza-CE</option>
+      <option value="florianópolis, sc">Florianópolis-SC</option>
+      <option value="goiânia, go">Goiânia-GO</option>
+      <option value="macapá, pa">Macapá-AP</option>
+      <option value="maceió, al">Maceió-AL</option>
+      <option value="manaus, am">Manaus-AM</option>
+      <option value="natal, rn">Natal-RN</option>
+      <option value="palmas, to">Palmas-TO</option>
+      <option value="porto alegre, rs">Porto Alegre-RS</option>
+      <option value="porto velho, ro">Porto Velho-RO</option>
+      <option value="recife, pe">Recife-PE</option>
+      <option value="rio branco, ac">Rio Branco-AC</option>
+      <option value="rio de janeiro, rj">Rio de Janeiro-RJ</option>
+      <option value="são luís, ma">São Luís-MA</option>
+      <option value="são paulo, sp">São Paulo-SP</option>
+      <option value="salvador, ba">Salvador-BA</option>
+      <option value="teresina, pi">Teresina-PI</option>
+      <option value="vitória, es">Vitória-ES</option>
+    </select>
+      </div>
+    <div #map id="map" style="width: 100%;"></div>
+    <div id="floating-info" *ngIf="infoTxt">{{infoTxt}}</div>
+
+
+</ion-content>
